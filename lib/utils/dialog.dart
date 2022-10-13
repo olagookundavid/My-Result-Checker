@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:result_checker/justdey/storage.dart';
-import 'package:result_checker/justdey/utils/snackbar.dart';
+import 'package:result_checker/services/storage.dart';
+import 'package:result_checker/utils/snackbar.dart';
 import 'package:result_checker/widgets/custom_button.dart';
 
 TextEditingController course = TextEditingController();

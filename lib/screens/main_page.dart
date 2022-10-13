@@ -17,22 +17,6 @@ class MainStudentsScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: const ResultsBar(),
         centerTitle: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.white,
-              ),
-              child: const Icon(
-                Icons.menu_rounded,
-                color: primaryColor,
-              ),
-            ),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),

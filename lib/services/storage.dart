@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:result_checker/justdey/crudmethods.dart';
+import 'package:result_checker/services/crudmethods.dart';
 
 //Repository to create an abstract layer
 class StorageService {

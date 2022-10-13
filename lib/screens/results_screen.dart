@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:result_checker/constants.dart';
-import 'package:result_checker/justdey/storage.dart';
 import 'package:result_checker/screens/complain_screen.dart';
 import 'package:result_checker/screens/view_display_screen.dart';
+import 'package:result_checker/services/storage.dart';
 import 'package:result_checker/widgets/custom_button.dart';
 import 'package:result_checker/widgets/my_results_widget.dart';
 
@@ -24,22 +24,6 @@ class ResultsScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: const ResultsBar(),
         centerTitle: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              width: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                color: Colors.white,
-              ),
-              child: const Icon(
-                Icons.menu_rounded,
-                color: primaryColor,
-              ),
-            ),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CrudMethods {
   final _firestore = FirebaseFirestore.instance;
 
-  Future<void> add1stRemark(remark, subject) async {
+  Future<void> add1stRemark(subject, remark) async {
     await _firestore
         .collection('student')
         .doc('1stsemester')
@@ -16,7 +16,7 @@ class CrudMethods {
     });
   }
 
-  Future<void> add2ndRemark(remark, subject) async {
+  Future<void> add2ndRemark(subject, remark) async {
     await _firestore
         .collection('student')
         .doc('2ndsemester')
@@ -28,7 +28,7 @@ class CrudMethods {
     });
   }
 
-  Future<void> add1stComplaint(complain, subject) async {
+  Future<void> add1stComplaint(subject, complain) async {
     await _firestore
         .collection('student')
         .doc('1stsemester')
@@ -40,7 +40,7 @@ class CrudMethods {
     });
   }
 
-  Future<void> add2ndComplaint(complain, subject) async {
+  Future<void> add2ndComplaint(subject, complain) async {
     await _firestore
         .collection('student')
         .doc('2ndsemester')
