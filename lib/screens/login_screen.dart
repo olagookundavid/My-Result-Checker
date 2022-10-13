@@ -34,7 +34,11 @@ class CustomLogin extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            CustomTextField(hinttext: 'Matric Number', controller: controller),
+            CustomTextField(
+                hinttext: role.toLowerCase() == 'student'
+                    ? 'Matric Number'
+                    : 'User Name',
+                controller: controller),
             const SizedBox(
               height: 15,
             ),
@@ -52,7 +56,7 @@ class CustomLogin extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => role.toLowerCase() == 'student'
-                        ? const MainScreen()
+                        ? const MainStudentsScreen()
                         : AdminScreen(),
                   ),
                 );

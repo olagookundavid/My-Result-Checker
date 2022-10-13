@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:result_checker/constants.dart';
-import 'package:result_checker/screens/complain_screen.dart';
 import 'package:result_checker/screens/home_screen.dart';
 import 'package:result_checker/screens/results_screen.dart';
 import 'package:result_checker/widgets/custom_back_buttons.dart';
 import 'package:result_checker/widgets/custom_button.dart';
 import 'package:result_checker/widgets/my_results_widget.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class MainStudentsScreen extends StatelessWidget {
+  const MainStudentsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +64,15 @@ class MainScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ResultsScreen(
-                            text: 'First Semester Results')),
+                      builder: (context) => const ResultsScreen(
+                        is1st: true,
+                        admin: false,
+                      ),
+                    ),
                   );
                 }),
             const SizedBox(
-              height: 12,
+              height: 25,
             ),
             CustomButton(
                 text: 'Your Second Semester Result',
@@ -79,24 +81,15 @@ class MainScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const ResultsScreen(
-                            text: 'Second Semester Results')),
+                      builder: (context) => const ResultsScreen(
+                        is1st: false,
+                        admin: false,
+                      ),
+                    ),
                   );
                 }),
             const SizedBox(
-              height: 12,
-            ),
-            CustomButton(
-                text: 'Make A Complain',
-                width: 300,
-                ontap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ComplainScreen()),
-                  );
-                }),
-            const SizedBox(
-              height: 30,
+              height: 40,
             ),
             CustomBackButton(
                 text: 'Logout',

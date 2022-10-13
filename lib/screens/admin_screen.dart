@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:result_checker/constants.dart';
+import 'package:result_checker/justdey/utils/dialog.dart';
 import 'package:result_checker/screens/results_screen.dart';
 import 'package:result_checker/screens/upload_results_screen.dart';
 import 'package:result_checker/widgets/custom_button.dart';
@@ -78,10 +79,28 @@ class AdminScreen extends StatelessWidget {
                       text: 'Upload Result',
                       width: 120,
                       ontap: () {
-                        Navigator.push(
+                        addSemesterRouteDialog(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => UploadResults()),
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UploadResults(
+                                        studentNo: controller.text,
+                                        is1st: true,
+                                      )),
+                            );
+                          },
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UploadResults(
+                                        studentNo: controller.text,
+                                        is1st: false,
+                                      )),
+                            );
+                          },
                         );
                       }),
                   const SizedBox(
@@ -91,13 +110,30 @@ class AdminScreen extends StatelessWidget {
                       text: 'Check Result',
                       width: 120,
                       ontap: () {
-                        Navigator.push(
+                        addSemesterRouteDialog(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const ResultsScreen(
-                                    text: 'First Semester Result',
-                                    admin: true,
-                                  )),
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultsScreen(
+                                        studentNo: controller.text,
+                                        is1st: true,
+                                        admin: true,
+                                      )),
+                            );
+                          },
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ResultsScreen(
+                                        studentNo: controller.text,
+                                        is1st: false,
+                                        admin: true,
+                                      )),
+                            );
+                          },
                         );
                       }),
                 ],
