@@ -3,6 +3,7 @@ import 'package:result_checker/constants.dart';
 import 'package:result_checker/screens/results_screen.dart';
 import 'package:result_checker/screens/upload_results_screen.dart';
 import 'package:result_checker/utils/dialog.dart';
+import 'package:result_checker/utils/error_dialog.dart';
 import 'package:result_checker/widgets/custom_button.dart';
 import 'package:result_checker/widgets/custom_textfields.dart';
 import 'package:result_checker/widgets/my_results_widget.dart';
@@ -63,29 +64,37 @@ class AdminScreen extends StatelessWidget {
                       text: 'Upload Result',
                       width: 120,
                       ontap: () {
-                        addSemesterRouteDialog(
-                          context,
-                          () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UploadResults(
-                                        studentNo: controller.text,
-                                        is1st: true,
-                                      )),
-                            );
-                          },
-                          () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => UploadResults(
-                                        studentNo: controller.text,
-                                        is1st: false,
-                                      )),
-                            );
-                          },
-                        );
+                        (controller.text.toLowerCase() ==
+                                'COM/HND/20/00697'.toLowerCase())
+                            ? addSemesterRouteDialog(
+                                context,
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UploadResults(
+                                              studentNo: controller.text,
+                                              is1st: true,
+                                            )),
+                                  );
+                                },
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UploadResults(
+                                              studentNo: controller.text,
+                                              is1st: false,
+                                            )),
+                                  );
+                                },
+                              )
+                            : showErrorDialog(
+                                context: context,
+                                title: 'Error',
+                                content:
+                                    'Matric Number doesn\'t match that of a student.',
+                                defaultActionText: 'Cancel');
                       }),
                   const SizedBox(
                     width: 10,
@@ -94,31 +103,38 @@ class AdminScreen extends StatelessWidget {
                       text: 'Check Result',
                       width: 120,
                       ontap: () {
-                        addSemesterRouteDialog(
-                          context,
-                          () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ResultsScreen(
-                                        studentNo: controller.text,
-                                        is1st: true,
-                                        admin: true,
-                                      )),
-                            );
-                          },
-                          () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ResultsScreen(
-                                        studentNo: controller.text,
-                                        is1st: false,
-                                        admin: true,
-                                      )),
-                            );
-                          },
-                        );
+                        (controller.text.toLowerCase() ==
+                                'COM/HND/20/00697'.toLowerCase())
+                            ? addSemesterRouteDialog(
+                                context,
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ResultsScreen(
+                                              studentNo: controller.text,
+                                              is1st: true,
+                                              admin: true,
+                                            )),
+                                  );
+                                },
+                                () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ResultsScreen(
+                                              studentNo: controller.text,
+                                              is1st: false,
+                                              admin: true,
+                                            )),
+                                  );
+                                },
+                              )
+                            : showErrorDialog(
+                                context: context,
+                                title: 'Error',
+                                content: 'Check the UserName or Password.',
+                                defaultActionText: 'ok');
                       }),
                 ],
               )

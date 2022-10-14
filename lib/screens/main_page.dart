@@ -7,8 +7,8 @@ import 'package:result_checker/widgets/custom_button.dart';
 import 'package:result_checker/widgets/my_results_widget.dart';
 
 class MainStudentsScreen extends StatelessWidget {
-  const MainStudentsScreen({super.key});
-
+  const MainStudentsScreen({super.key, required this.matNo});
+  final String matNo;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +31,9 @@ class MainStudentsScreen extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            const Text(
-              'Student Name',
-              style: TextStyle(
+            Text(
+              matNo.toUpperCase(),
+              style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
                   color: primaryColor),

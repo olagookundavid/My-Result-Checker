@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:result_checker/screens/admin_screen.dart';
 import 'package:result_checker/screens/main_page.dart';
+import 'package:result_checker/utils/error_dialog.dart';
 import 'package:result_checker/widgets/custom_back_buttons.dart';
 import 'package:result_checker/widgets/custom_button.dart';
 import 'package:result_checker/widgets/custom_textfields.dart';
@@ -50,16 +51,28 @@ class CustomLogin extends StatelessWidget {
               text: 'Login',
               width: 150,
               ontap: () {
-                controller.clear();
-                controller2.clear();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => role.toLowerCase() == 'student'
-                        ? const MainStudentsScreen()
-                        : AdminScreen(),
-                  ),
-                );
+                (controller.text.toLowerCase() ==
+                                'COM/HND/20/00697'.toLowerCase() ||
+                            controller.text.toLowerCase() ==
+                                'AdminOne'.toLowerCase()) &&
+                        (controller2.text.toLowerCase() == '12345' ||
+                            controller2.text.toLowerCase() == '54321')
+                    ? Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => role.toLowerCase() == 'student'
+                              ? MainStudentsScreen(matNo: controller.text)
+                              : AdminScreen(),
+                        ),
+                      ).then((value) {
+                        controller.clear();
+                        controller2.clear();
+                      })
+                    : showErrorDialog(
+                        context: context,
+                        title: 'Error',
+                        content: 'Check the Username or Password.',
+                        defaultActionText: 'Cancel');
               },
             ),
             const SizedBox(
